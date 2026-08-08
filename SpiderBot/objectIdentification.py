@@ -7,7 +7,7 @@ os.makedirs(SAVE_FOLDER, exist_ok=True)
 
 model = YOLO("yolov8n.pt")
 
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(1, cv2.CAP_DSHOW)
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
 
 if not cap.isOpened():
@@ -17,7 +17,7 @@ if not cap.isOpened():
 survivor_count = 0
 seen_ids = set()
 saved_histograms = []
-similarity = 0.80
+similarity = 0.75
 
 def get_histogram(image):
     hist = cv2.calcHist([image], [0, 1, 2], None, [8, 8, 8], [0, 256, 0, 256, 0, 256])
@@ -81,15 +81,7 @@ while True:
 
                 print(f"New survivor counted: {survivor_count}")
 
-    # cv2.putText(
-    #     annotated_frame,
-    #     f"Survivors: {survivor_count}",
-    #     (10, 30),
-    #     cv2.FONT_HERSHEY_SIMPLEX,
-    #     1,
-    #     (0, 255, 0),
-    #     2
-    # )
+
 
     cv2.imshow("YOLO Survivor Counter", annotated_frame)
 
