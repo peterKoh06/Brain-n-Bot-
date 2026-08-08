@@ -1,0 +1,121 @@
+{
+  "control_hz": 50.0,
+  "physics_hz": 240.0,
+  "physics_substeps": 4,
+  "gravity": [
+    0.0,
+    -9.81,
+    0.0
+  ],
+  "gait": {
+    "step_period_s": 1.0,
+    "max_climb_height_m": 0.085,
+    "normal_lift_pitch_deg": -16.0,
+    "normal_lift_knee_deg": 24.0,
+    "climb_lift_pitch_deg": -29.0,
+    "climb_lift_knee_deg": 40.0,
+    "yaw_sweep_deg": 17.0
+  },
+  "chassis": {
+    "length_m": 0.22,
+    "width_m": 0.14,
+    "height_m": 0.045,
+    "mass_kg": 0.8
+  },
+  "links": {
+    "coxa_length_m": 0.055,
+    "femur_length_m": 0.105,
+    "tibia_length_m": 0.12,
+    "link_radius_m": 0.012,
+    "coxa_mass_kg": 0.055,
+    "femur_mass_kg": 0.075,
+    "tibia_mass_kg": 0.065,
+    "foot_radius_m": 0.018
+  },
+  "contact": {
+    "ground_friction": 1.0,
+    "foot_friction": 1.25,
+    "restitution": 0.0
+  },
+  "motors": {
+    "stiffness": 24.0,
+    "damping": 2.8,
+    "max_force": 5.0,
+    "servo_max_speed_deg_s": 300.0
+  },
+  "joint_limits_deg": {
+    "hip_yaw": [
+      -35.0,
+      35.0
+    ],
+    "hip_pitch": [
+      -32.0,
+      38.0
+    ],
+    "knee": [
+      -50.0,
+      50.0
+    ]
+  },
+  "initial_geometry_deg": {
+    "femur_down_angle": 48.0,
+    "tibia_extra_down_angle": 55.0
+  },
+  "i2c": {
+    "left_address": 16,
+    "right_address": 17,
+    "command_set_angles": 1,
+    "checksum": "sum8",
+    "byte_order": "big"
+  },
+  "servo_mapping": {
+    "FL_hip_yaw": {
+      "center_deg": 90.0,
+      "sign": 1.0
+    },
+    "FL_hip_pitch": {
+      "center_deg": 90.0,
+      "sign": -1.0
+    },
+    "FL_knee": {
+      "center_deg": 90.0,
+      "sign": 1.0
+    },
+    "FR_hip_yaw": {
+      "center_deg": 90.0,
+      "sign": -1.0
+    },
+    "FR_hip_pitch": {
+      "center_deg": 90.0,
+      "sign": 1.0
+    },
+    "FR_knee": {
+      "center_deg": 90.0,
+      "sign": -1.0
+    },
+    "BL_hip_yaw": {
+      "center_deg": 90.0,
+      "sign": 1.0
+    },
+    "BL_hip_pitch": {
+      "center_deg": 90.0,
+      "sign": -1.0
+    },
+    "BL_knee": {
+      "center_deg": 90.0,
+      "sign": 1.0
+    },
+    "BR_hip_yaw": {
+      "center_deg": 90.0,
+      "sign": -1.0
+    },
+    "BR_hip_pitch": {
+      "center_deg": 90.0,
+      "sign": 1.0
+    },
+    "BR_knee": {
+      "center_deg": 90.0,
+      "sign": -1.0
+    }
+  }
+}
