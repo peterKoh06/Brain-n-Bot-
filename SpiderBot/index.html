@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Survivor Counter</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Survival Investigation Stream</h1>
+  <div class="subtitle">Live camera feed with person detection</div>
+
+  <div class="feed-container">
+    <img id="feed" src="frame.jpg" width="640">
+  </div>
+  <button>End Video</button>
+  <div class="section-title">
+    Survivor Identification <span class="count-badge" id="count">0</span>
+  </div>
+  <div id="photos">
+    <div class="empty-state">No photos saved yet...</div>
+  </div>
+
+  <script>
+    setInterval(() => {
+      document.getElementById("feed").src = "frame.jpg?t=" + Date.now();
+    }, 500);
+
+    setInterval(() => {
+      fetch("photos.txt?t=" + Date.now())
+        .then(res => res.text())
+        .then(text => {
+          const names = text.trim().split("\n").filter(Boolean);
+          const container = document.getElementById("photos");
+          document.getElementById("count").textContent = names.length;
+
+          if (names.length === 0) {
+            container.innerHTML = '<div class="empty-state">No photos saved yet...</div>';
+            return;
+          }
+
+          container.innerHTML = names
+            .map(name => `<img src="Photos/${name}" width="150">`)
+            .join("");
+        });
+    }, 2000);
+    document.querySelector("button").addEventListener("click", () => {
+        fetch("http://" + location.hostname + ":8001/stop", { method: "POST" });
+    });
+  </script>
+</body>
+</html>
